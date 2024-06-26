@@ -37,3 +37,4 @@ jobs:
           tags: ghcr.io/${{ github.repository_owner }}/developer-platform:latest
           file: ./Dockerfile
           platforms: linux/amd64,linux/arm64
+          build-args: --progress=plain
