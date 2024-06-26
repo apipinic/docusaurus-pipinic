@@ -31,6 +31,6 @@ You can find the source code and installation instructions at the following GitH
 5. **Pull and Start the Container Directly**:
    If you prefer not to build the container manually, you can pull and start the container with the following commands:
    ```sh
-   docker pull ghcr.io/apipinic/developer-platform:latest@sha256:e7e14b57a0850e53c08d959c2eac01429bc1d8bbe8f642e1bf4553ed711ea147
-   docker run -d --name developer-platform -p 3000:3000 ghcr.io/apipinic/developer-platform:latest@sha256:e7e14b57a0850e53c08d959c2eac01429bc1d8bbe8f642e1bf4553ed711ea147
+   docker pull ghcr.io/apipinic/developer-platform:latest
+   docker run -d --name developer-platform -p 3000:3000 ghcr.io/apipinic/developer-platform:latest
    ```
