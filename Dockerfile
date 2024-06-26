@@ -11,9 +11,11 @@ COPY package*.json ./
 COPY .npmrc .npmrc
 RUN if [ -f .npmrc ]; then echo ".npmrc found"; else echo ".npmrc not found"; fi
 
-# Clean npm cache and install dependencies with retries
-RUN npm cache clean --force && \
-    npm ci --verbose || cat /root/.npm/_logs/*-debug-*.log
+# Install dependencies
+RUN if [ -f package-lock.json ]; then npm ci --verbose; else npm install --verbose; fi
+
+# Verify Docusaurus installation
+RUN npx docusaurus --version || echo "Docusaurus not installed"
 
 # Copy the rest of the application source code
 COPY . .
