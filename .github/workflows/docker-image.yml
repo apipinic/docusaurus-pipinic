@@ -44,23 +44,10 @@ jobs:
           push: true
           tags: ghcr.io/${{ github.repository_owner }}/developer-platform:latest
           file: ./Dockerfile
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache
           build-args: --progress=plain
-
-      - name: Install Cosign
-        run: |
-          wget https://github.com/sigstore/cosign/releases/download/v1.3.1/cosign-linux-amd64
-          chmod +x cosign-linux-amd64
-          sudo mv cosign-linux-amd64 /usr/local/bin/cosign
-
-      - name: Sign Docker image
-        env:
-          COSIGN_KEY: ${{ secrets.COSIGN_KEY }}
-        run: |
-          echo "${{ secrets.COSIGN_KEY }}" > cosign.key
-          cosign sign --key cosign.key ghcr.io/${{ github.repository_owner }}/developer-platform:latest
 
       - name: Install Trivy
         run: |
