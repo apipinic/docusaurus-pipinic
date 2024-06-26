@@ -1,16 +1,21 @@
+# Enable BuildKit for better caching and parallelism
+# syntax=docker/dockerfile:1.3-labs
+
 # Use multi-stage builds to cache dependencies
 FROM node:18 AS build
 
 # Create app directory
 WORKDIR /usr/src/app
 
-# Copy package.json, package-lock.json, and optionally .npmrc
+# Copy package.json and package-lock.json first
 COPY package*.json ./
-COPY .npmrc .npmrc
-RUN if [ -f .npmrc ]; then echo ".npmrc found"; else echo ".npmrc not found"; fi
 
-# Install dependencies
-RUN if [ -f package-lock.json ]; then npm ci --verbose; else npm install --verbose; fi
+# Check if .npmrc exists and copy it, otherwise ignore
+COPY .npmrc .npmrc
+
+# Use cache to speed up npm install
+RUN --mount=type=cache,target=/root/.npm \
+    if [ -f package-lock.json ]; then npm ci --verbose; else npm install --verbose; fi
 
 # Verify Docusaurus installation
 RUN npx docusaurus --version || echo "Docusaurus not installed"
