@@ -11,8 +11,9 @@ COPY package*.json ./
 COPY .npmrc .npmrc
 RUN if [ -f .npmrc ]; then echo ".npmrc found"; else echo ".npmrc not found"; fi
 
-# Install dependencies
-RUN npm ci --verbose
+# Clean npm cache and install dependencies with retries
+RUN npm cache clean --force && \
+    npm ci --verbose || cat /root/.npm/_logs/*-debug-*.log
 
 # Copy the rest of the application source code
 COPY . .
