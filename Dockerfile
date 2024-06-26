@@ -3,9 +3,12 @@ FROM node:18
 # Create app directory
 WORKDIR /usr/src/app
 
-# Install app dependencies
+# Copy package.json and package-lock.json
 COPY package*.json ./
-RUN npm install --verbose
+
+# Clean npm cache and install dependencies without optional ones
+RUN npm cache clean --force
+RUN npm install --no-optional --verbose
 
 # Bundle app source
 COPY . .
