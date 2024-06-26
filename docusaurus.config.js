@@ -78,7 +78,7 @@ module.exports = {
       {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
-          editUrl: 'https://github.com/apipinic/docusaurus-pipinic/edit/main/website/',
+          editUrl: 'https://github.com/apipinic/docusaurus-pipinic/edit/main/',
         },
         blog: false,
         theme: {
