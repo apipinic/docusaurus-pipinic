@@ -1,4 +1,4 @@
-name: Build and Push Docker image
+name: Build, Sign, and Push Docker image
 
 on:
   push:
@@ -44,7 +44,7 @@ jobs:
           push: true
           tags: ghcr.io/${{ github.repository_owner }}/developer-platform:latest
           file: ./Dockerfile
-          platforms: linux/amd64
+          platforms: linux/amd64,linux/arm64
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache
           build-args: --progress=plain
@@ -57,7 +57,7 @@ jobs:
 
       - name: Sign Docker image
         env:
-          COSIGN_PASSWORD: ${{ secrets.COSIGN_PASSWORD }}
+          COSIGN_KEY: ${{ secrets.COSIGN_KEY }}
         run: |
           echo "${{ secrets.COSIGN_KEY }}" > cosign.key
           cosign sign --key cosign.key ghcr.io/${{ github.repository_owner }}/developer-platform:latest
