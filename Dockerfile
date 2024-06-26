@@ -3,14 +3,16 @@ FROM node:18
 # Create app directory
 WORKDIR /usr/src/app
 
+# Copy npm configuration file for network settings
+COPY .npmrc ./
+
 # Copy package.json and package-lock.json
 COPY package*.json ./
 
-# Clean npm cache and install dependencies without optional ones
-RUN npm cache clean --force
-RUN npm install --no-optional --verbose
+# Use npm ci to install dependencies
+RUN npm ci --verbose
 
-# Bundle app source
+# Copy the rest of the application source code
 COPY . .
 
 # Build the Docusaurus site
