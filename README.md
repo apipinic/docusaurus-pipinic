@@ -26,7 +26,7 @@ You can find the source code and installation instructions at the following GitH
    ```
 
 4. **Access the Application**:
-   Open your web browser and go to `http://localhost:3000`.
+   Open your web browser and go to `http://localhost:3000` (or alternatively to `http://127.0.0.1:3000`).
 
 5. **Pull and Start the Container Directly**:
    If you prefer not to build the container manually, you can pull and start the container with the following commands:
