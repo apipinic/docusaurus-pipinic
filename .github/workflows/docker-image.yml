@@ -36,3 +36,4 @@ jobs:
           push: true
           tags: ghcr.io/${{ github.repository_owner }}/developer-platform:latest
           file: ./Dockerfile
+          platforms: linux/amd64,linux/arm64

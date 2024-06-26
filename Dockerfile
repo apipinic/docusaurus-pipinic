@@ -17,4 +17,4 @@ RUN npm run build
 EXPOSE 3000
 
 # Command to run the app
-CMD ["npx", "docusaurus", "serve", "build", "--port", "3000", "--host", "0.0.0.0"]
+CMD ["npx", "docusaurus", "serve", "--build", "--port", "3000", "--host", "0.0.0.0"]
