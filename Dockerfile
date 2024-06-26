@@ -3,14 +3,15 @@ FROM node:18
 # Create app directory
 WORKDIR /usr/src/app
 
-# Copy npm configuration file for network settings
-COPY .npmrc ./
-
-# Copy package.json and package-lock.json
+# Copy package.json and package-lock.json first
 COPY package*.json ./
 
-# Use npm ci to install dependencies
-RUN npm ci --verbose
+# Check if .npmrc exists and copy it, otherwise ignore
+COPY .npmrc .npmrc
+RUN if [ -f .npmrc ]; then echo ".npmrc found"; else echo ".npmrc not found"; fi
+
+# Use npm install to install dependencies
+RUN npm install --verbose
 
 # Copy the rest of the application source code
 COPY . .
