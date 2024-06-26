@@ -4,10 +4,8 @@ FROM node:18 AS build
 # Create app directory
 WORKDIR /usr/src/app
 
-# Copy package.json and package-lock.json first
+# Copy package.json, package-lock.json, and optionally .npmrc
 COPY package*.json ./
-
-# Check if .npmrc exists and copy it, otherwise ignore
 COPY .npmrc .npmrc
 RUN if [ -f .npmrc ]; then echo ".npmrc found"; else echo ".npmrc not found"; fi
 
