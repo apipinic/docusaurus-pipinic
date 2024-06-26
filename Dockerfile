@@ -35,8 +35,17 @@ WORKDIR /usr/src/app
 COPY --from=build /usr/src/app/build /usr/src/app/build
 COPY --from=build /usr/src/app/node_modules /usr/src/app/node_modules
 
+# Ensure all necessary source and config files are copied
+COPY --from=build /usr/src/app/docusaurus.config.js /usr/src/app/docusaurus.config.js
+COPY --from=build /usr/src/app/sidebars.js /usr/src/app/sidebars.js
+COPY --from=build /usr/src/app/src /usr/src/app/src
+COPY --from=build /usr/src/app/static /usr/src/app/static
+
 # Expose the port the app runs on
 EXPOSE 3000
 
+# Debug: List contents of /usr/src/app directory
+RUN ls -la /usr/src/app
+
 # Command to run the app
-CMD ["npx", "docusaurus", "serve", "build", "--port", "3000", "--host", "0.0.0.0"]
+CMD ["npx", "docusaurus", "serve", "--port", "3000", "--host", "0.0.0.0"]
