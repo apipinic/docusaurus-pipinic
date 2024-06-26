@@ -1,33 +1,36 @@
-# Website
 
-This website is built using [Docusaurus 2](https://docusaurus.io/), a modern static website generator.
+# Developer Platform
 
-### Installation
+## Git Repository
 
-```
-$ yarn
-```
+You can find the source code and installation instructions at the following GitHub repository:
 
-### Local Development
+[GitHub Repository](https://github.com/apipinic/developer-platform)
 
-```
-$ yarn start
-```
+## Installation Instructions
 
-This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
+1. **Clone the Repository**:
+   ```sh
+   git clone https://github.com/apipinic/developer-platform.git
+   ```
 
-### Build
+2. **Navigate to the Project Directory**:
+   ```sh
+   cd developer-platform
+   ```
 
-```
-$ yarn build
-```
+3. **Build and Run the Docker Container**:
+   ```sh
+   docker build -t developer-platform .
+   docker run -d --name developer-platform -p 3000:3000 developer-platform
+   ```
 
-This command generates static content into the `build` directory and can be served using any static contents hosting service.
+4. **Access the Application**:
+   Open your web browser and go to `http://localhost:3000`.
 
-### Deployment
-
-```
-$ GIT_USER=<Your GitHub username> USE_SSH=true yarn deploy
-```
-
-If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
+5. **Pull and Start the Container Directly**:
+   If you prefer not to build the container manually, you can pull and start the container with the following commands:
+   ```sh
+   docker pull ghcr.io/apipinic/developer-platform:latest@sha256:e7e14b57a0850e53c08d959c2eac01429bc1d8bbe8f642e1bf4553ed711ea147
+   docker run -d --name developer-platform -p 3000:3000 ghcr.io/apipinic/developer-platform:latest@sha256:e7e14b57a0850e53c08d959c2eac01429bc1d8bbe8f642e1bf4553ed711ea147
+   ```
