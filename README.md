@@ -1,6 +1,6 @@
 
 
-# Developer Platform
+# Developer Platform - 	Gruppe E
 
 - What is Docusaurus? - [Docusaurus](https://docusaurus.io/docs)
 - Docusaurus Deployment - [Deployment](https://docusaurus.io/docs/deployment)
@@ -49,3 +49,9 @@ In case of already having the deployment ready data - we can easily skip the nvm
     NETLIFY_DEPLOY_MESSAGE: "Deploy from GitHub Actions - Commit ${{ github.workflow_sha }} pushed by ${{ github.actor }}"
     NETLIFY_DEPLOY_TO_PROD: true
 ```
+## Contributing
+We value your contributions and feedback! If you have any suggestions or find any issues, please create an issue on our GitHub repository or reach out to us via email. Your input helps us improve and better serve the community.
+1. 2310781019@fh-burgenland.at
+2. 2310781023@fh-burgenland.at
+3. 2310781004@fh-burgenland.at
+4. 2310781021@fh-burgenland.at
