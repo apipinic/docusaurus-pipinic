@@ -7,6 +7,7 @@
 
 <img src = "https://docusaurus.io/img/docusaurus_keytar.svg" height = "70">
 
+
 ## ⚙️ Setup
 #### 1. Clone the Repository: 
    ```sh
